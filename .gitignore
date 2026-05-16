@@ -1,0 +1,23 @@
+# Claude Code / agent tooling — local config + transcripts
+.claude/
+
+# Playwright CLI QA scratch (screenshots, snapshots, console logs)
+.playwright-cli/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Python build script artefacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Local preview / scratch HTML
+IndexV*_locked*.html
+*_qa_*.png
+*_debug*.png
