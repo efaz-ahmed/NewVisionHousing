@@ -40,7 +40,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "IndexV33.html"
-DST = HERE / "IndexV34.html"
+DST = HERE / "index.html"
 
 
 # Style block ids to STRIP from the template (in order of removal).
