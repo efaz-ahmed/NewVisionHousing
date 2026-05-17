@@ -196,7 +196,11 @@ CONSOLIDATED_CSS = r"""
        and opacity resets defend against GSAP writing inline styles
        that would otherwise leave the map invisible or cropped. The
        JS map-clear observer below this style block tracks future
-       inline-style mutations and clears them reactively. */
+       inline-style mutations and clears them reactively.
+       `transform: none !important` is required to beat a legacy
+       desktop rule `.map-stage { transform: translateX(-6%) !important }`
+       elsewhere in the bundle that otherwise shifts the map ~18px
+       to the left of the column's centre. */
     .core-card__visual .map-section,
     .core-card__visual .map-stage,
     .core-card__visual .map-emerge {
@@ -207,10 +211,10 @@ CONSOLIDATED_CSS = r"""
       width: 100%;
       max-width: 100%;
       min-height: 0;
-      clip-path: none;
-      -webkit-clip-path: none;
-      transform: none;
-      opacity: 1;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      transform: none !important;
+      opacity: 1 !important;
     }
     /* Map image -- aspect-ratio drives intrinsic height so the
        container can size from it without a calc() magic number. */
