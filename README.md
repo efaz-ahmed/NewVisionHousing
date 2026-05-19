@@ -32,6 +32,29 @@ Breakpoints used:
 - `≤768px` — hero BG fix, flagship image hidden
 - `≤640px` — hero typography centred + bold + 35% larger; stats become single row
 
+## Contact form
+
+The Get-in-touch form posts to `/api/contact` (Vercel serverless
+function in [`api/contact.js`](./api/contact.js)). The function
+validates the submission and sends an email via [Resend](https://resend.com).
+
+### Deployment (Vercel)
+
+1. **Connect this repo to Vercel** (vercel.com → New Project → import GitHub repo).
+2. In the Vercel project, go to **Settings → Environment Variables** and add:
+
+   | Name | Value | Required |
+   |---|---|---|
+   | `RESEND_API_KEY` | Your Resend API key (`re_…`) — generate at https://resend.com/api-keys | **yes** |
+   | `CONTACT_RECIPIENT` | Email address that receives submissions. Default: `efaz.mintu@gmail.com` (testing). Set to `info@nvhltd.com` for production. | no |
+   | `RESEND_FROM` | The "From:" header Resend sends. Default: `NVH Website <onboarding@resend.dev>` (Resend's shared sender — works without domain verification, lower deliverability). For production, verify `nvhltd.com` in Resend's dashboard and set this to e.g. `NVH <contact@nvhltd.com>`. | no |
+
+3. Vercel auto-deploys on every push to `main`. No build step needed (static HTML + zero-dep serverless function).
+
+### Security
+
+The API key never lives in the repo — it's only in Vercel's encrypted env vars. The `.gitignore` also excludes any local `.env`/`.env.local` files in case you ever run `vercel dev` locally.
+
 ## Company
 
 - **Legal name:** NEW VISION HOUSING LIMITED

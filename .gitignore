@@ -21,3 +21,22 @@ __pycache__/
 IndexV*_locked*.html
 *_qa_*.png
 *_debug*.png
+*_centered.png
+*_visible.png
+v3*_*.png
+
+# Secrets — Vercel env vars + Resend API key live in Vercel dashboard,
+# never in the repo. If you create a local .env for `vercel dev`, this
+# rule keeps it out of git.
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.production.local
+
+# Vercel deploy cache
+.vercel/
+
+# Node — only present if/when you `npm install` anything (currently
+# the project has no runtime deps; package.json is purely metadata).
+node_modules/
